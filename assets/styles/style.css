@@ -13,8 +13,25 @@ h1{
     margin-top: 2rem;
 }
 
+h2{
+    font-size: 1.5rem;
+}
+
+h3{
+    font-size: 1.2rem;
+}
+
+h4{
+    font-size: 1rem;
+}
+
 form{
-    margin: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+p{
+    color: grey;
 }
 
 .container{
@@ -24,4 +41,8 @@ form{
 
 .date{
     margin: 2rem;
+}
+
+.input-group{
+    margin-top: 2rem;
 }

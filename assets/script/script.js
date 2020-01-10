@@ -2,16 +2,17 @@
 
 
 
-const renderDate = data => {
+const renderDate = (data, name) => {
     
     const names = data.results.map(name => name.name);
     const days = data.results.map(day => day.day);
     const months = data.results.map(month => month.month);
 
     document.querySelector('#date').innerHTML = `
-    <h2>Name day ${days.join('')}/${months.join('')}:</h2>
-    <h3>Others who also have name day this day:</h3>
-    <p>${names.join(', ')}'</p>
+    <h2>${name}</h2>
+    <h3>Name day ${days.join('')}/${months.join('')}</h3>
+    <h4>Others who also have name day this day:</h4>
+    <p>${names.join(', ')}</p>
     `
 };
 
@@ -20,20 +21,40 @@ document.querySelector('#form').addEventListener('submit', e => {
     e.preventDefault();
 
     const name = document.querySelector('#nameInput').value;
-    //const country = document.querySelector('#countryInput').value;
+    const country = document.querySelector('#countryInput').value;
+    const day = document.querySelector('#day').value;
+    const month = document.querySelector('#month').value;
     
-    getNamesDay(name)
-    .then(data => {
-        if(200){
-            console.log(data);
-            renderDate(data);
-        }else{
-            console.error('not OK');
-            //kalla på en warnings funktion med data.message
-        }
-    })
-    .catch(err => {
-        //kalla på en warnings funktion med err
-        console.error(err);
-    });
-});
+    
+        getNameDay(name, country)
+        .then(data => {
+            if(200){
+                console.log(data);
+                renderDate(data, name);
+            }else{
+                console.error('not OK');
+                //kalla på en warnings funktion med data.message
+            }
+        })
+        .catch(err => {
+            //kalla på en warnings funktion med err
+            console.error(err);
+        });
+    
+        getNames(country, day, month)
+        .then(data => {
+            if(200){
+                console.log(data);
+                renderDate(data, name);
+            }else{
+                console.error('not OK');
+                //kalla på en warnings funktion med data.message
+            }
+        })
+        .catch(err => {
+            //kalla på en warnings funktion med err
+            console.error(err);
+        });
+    
+ });
+
