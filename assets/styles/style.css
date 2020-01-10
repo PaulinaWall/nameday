@@ -4,8 +4,12 @@
     padding: 0;
 }
 
-button{
-    margin: 0 auto;
+body{
+    background-image: url(../images/paper.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 h1{
@@ -14,14 +18,18 @@ h1{
 }
 
 h2{
+    color: #495057;
     font-size: 1.5rem;
+
 }
 
 h3{
+    color: #495057;
     font-size: 1.2rem;
 }
 
 h4{
+    color: #495057;
     font-size: 1rem;
 }
 
@@ -31,7 +39,11 @@ form{
 }
 
 p{
-    color: grey;
+    color: #aaaa;
+}
+
+.col-12{
+    margin-bottom: 1.5rem;
 }
 
 .container{
@@ -39,10 +51,38 @@ p{
     margin: 0 auto;
 }
 
+.content-container{
+    background-color: white;
+    border-radius: 15px 15px;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+}
+
+.custom-select{
+    border-radius: 15px 15px;
+}
+
 .date{
     margin: 2rem;
 }
 
+.form-control{
+    border-radius: 15px 15px;
+}
+
 .input-group{
-    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group > .custom-select:not(:last-child), .input-group > .form-control:not(:last-child){
+    border-radius: 15px 15px;
+}
+
+#names{
+    margin-top: 1.5rem;
+    width: 100vw;
+}
+
+#names h2{
+    font-size: 1rem;
 }

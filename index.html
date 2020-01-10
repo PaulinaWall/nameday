@@ -16,19 +16,34 @@
         <h1>Name day</h1>
             <form id="form">
                 <div class="form-row">
-                    <div class="col">
-                        <label for="nameInput">Name</label>
+                    <div class="col-12">
+                        <label for="countryInput">Select a country</label>
+                        <select class="custom-select" id="countryInput">
+                            <option selected>Country</option>
+                            <option value="at">Austria</option>
+                            <option value="dk">Denmark</option>
+                            <option value="fr">France</option>
+                            <option value="it">Italien</option>
+                            <option value="sk">Slovakia</option>
+                            <option value="cz">Czechia</option>
+                            <option value="es">Spain</option>
+                            <option value="hr">Croatia</option>
+                            <option value="pl">Poland</option>
+                            <option value="us">USA</option>
+                            <option value="de">Germany</option>
+                            <option value="fi">Finland</option>
+                            <option value="hu">Hungary</option>
+                            <option value="se">Sweden</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="nameInput">Write a name to get the names day.</label>
                         <input id="nameInput" type="text" class="form-control" placeholder="Name">
                     </div>
-                    <div class="col">
-                        <label for="countryInput">Country</label>
-                        <input id="countryInput" type="text" class="form-control" placeholder="Country">
-                    </div>
                 </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Choose</label>
-                    </div>
+                <div id="date"></div>
+                <div class="input-group">
+                    <label for="day">Choose day and month and see names day names.</label>
                     <select class="custom-select" id="day">
                         <option selected>Day</option>
                         <option value="1">1</option>
@@ -78,14 +93,10 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
+                    <div id="names"></div>
                 </div>
                 <button type="submit" class="btn btn-dark">Submit</button>
             </form>
-
-            <div class="content-container" id="date"></div>
-
-            <div class="content-container" id="names"></div>
-            
     </section>
 
    
