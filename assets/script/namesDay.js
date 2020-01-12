@@ -1,6 +1,6 @@
-const getTimezone = async () => {
+const getTimezone = async (country1, timezone) => {
 
-    const response = await fetch(`https://api.abalin.net/today?timezone=America/Toronto&country=us`);
+    const response = await fetch(`https://api.abalin.net/today?timezone=${timezone}&country=${country1}`);
 
     const data = await response.json();
     return data;
