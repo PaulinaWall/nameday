@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +9,32 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/styles/style.css">
-    <title>Name day</title>
+    <title>Namnsdag</title>
 </head>
 <body>
-    <section class="container">
-        <h1>Name day</h1>
+    <main class="container">
+        <h1>Namesday</h1>
             <form id="form">
-                <div class="form-row">
-                    <div class="col-12">
-                        <label for="countryInput">Select a country</label>
+                <div class="form-row" role="rowgroup">
+                    <section class="col-12">
+                        <label for="timezoneInput">Choose your timezone</label>
+                        <select class="custom-select" id="timezoneInput">
+                            <option selected>Timezone</option>
+                            <option value="st">Stockholm</option>
+                            <option value="lo">London</option>
+                            <option value="ny">New York</option>
+                            <option value="la">Los Angeles</option>
+                            <option value="sy">Sydney</option>
+                            <option value="to">Tokyo</option>
+                            <option value="ba">Bangkok</option>
+                        </select>
+                        <label for="countryInput">Choose country</label>
                         <select class="custom-select" id="countryInput">
                             <option selected>Country</option>
                             <option value="at">Austria</option>
                             <option value="dk">Denmark</option>
                             <option value="fr">France</option>
-                            <option value="it">Italien</option>
+                            <option value="it">Italy</option>
                             <option value="sk">Slovakia</option>
                             <option value="cz">Czechia</option>
                             <option value="es">Spain</option>
@@ -35,17 +46,38 @@
                             <option value="hu">Hungary</option>
                             <option value="se">Sweden</option>
                         </select>
-                    </div>
-                    <div class="col-12">
-                        <label for="nameInput">Write a name to get the names day.</label>
+                        <button type="submit" class="btn btn-dark">Search today names</button>
+                    </section>
+                    <aside id="todayNames"></aside>
+                    <section class="col-12">
+                        <label for="nameInput">Write a name</label>
                         <input id="nameInput" type="text" class="form-control" placeholder="Name">
-                    </div>
+                        <label for="countryInput">Choose country</label>
+                        <select class="custom-select" id="countryInput">
+                            <option selected>Country</option>
+                            <option value="at">Austria</option>
+                            <option value="dk">Denmark</option>
+                            <option value="fr">France</option>
+                            <option value="it">Italy</option>
+                            <option value="sk">Slovakia</option>
+                            <option value="cz">Czechia</option>
+                            <option value="es">Spain</option>
+                            <option value="hr">Croatia</option>
+                            <option value="pl">Poland</option>
+                            <option value="us">USA</option>
+                            <option value="de">Germany</option>
+                            <option value="fi">Finland</option>
+                            <option value="hu">Hungary</option>
+                            <option value="se">Sweden</option>
+                        </select>
+                        <button type="submit" class="btn btn-dark">Search date for namesday</button>
+                    </section>
                 </div>
-                <div id="date"></div>
-                <div class="input-group">
-                    <label for="day">Choose day and month and see names day names.</label>
+                <aside id="date"></aside>
+                <div class="input-group" role="input-container">
+                    <label for="day">Choose date</label>
                     <select class="custom-select" id="day">
-                        <option selected>Day</option>
+                        <option selected>Dag</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -79,25 +111,43 @@
                         <option value="31">31</option>
                     </select>
                     <select class="custom-select" id="month">
-                        <option selected>Month</option>
-                        <option value="1">January</option>
-                        <option value="2">February</option>
-                        <option value="3">March</option>
+                        <option selected>Månad</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Februari</option>
+                        <option value="3">Mars</option>
                         <option value="4">April</option>
-                        <option value="5">May</option>
-                        <option value="6">June</option>
-                        <option value="7">July</option>
-                        <option value="8">August</option>
+                        <option value="5">Maj</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Augusti</option>
                         <option value="9">September</option>
-                        <option value="10">October</option>
+                        <option value="10">Oktober</option>
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <div id="names"></div>
+                    <label for="countryInput">Choose country</label>
+                        <select class="custom-select" id="countryInput">
+                            <option selected>Country</option>
+                            <option value="at">Austria</option>
+                            <option value="dk">Denmark</option>
+                            <option value="fr">France</option>
+                            <option value="it">Italy</option>
+                            <option value="sk">Slovakia</option>
+                            <option value="cz">Czechia</option>
+                            <option value="es">Spain</option>
+                            <option value="hr">Croatia</option>
+                            <option value="pl">Poland</option>
+                            <option value="us">USA</option>
+                            <option value="de">Germany</option>
+                            <option value="fi">Finland</option>
+                            <option value="hu">Hungary</option>
+                            <option value="se">Sweden</option>
+                        </select>
+                        <button type="submit" class="btn btn-dark">Search namesday</button>
+                    <aside id="dateNames"></aside>
                 </div>
-                <button type="submit" class="btn btn-dark">Submit</button>
             </form>
-    </section>
+        </main>
 
    
 	<script src="assets/script/namesDay.js"></script>
