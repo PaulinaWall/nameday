@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -5,10 +7,12 @@
 }
 
 body{
+    background-color: rgb(211, 208, 208);
     background-image: url(../images/paper.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    font-family: 'Playfair Display', serif;
     height: 100vh;
 }
 
@@ -38,6 +42,11 @@ form{
     margin-bottom: 2rem;
 }
 
+label{
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+}
+
 p{
     color: #aaaa;
 }
@@ -45,6 +54,8 @@ p{
 .btn{
     width: 100%;
     border-radius: 15px 15px;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
 }
 
 .col-12{
@@ -52,14 +63,14 @@ p{
 }
 
 .container{
-    max-width: 970px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .content-container{
     background-color: white;
     border-radius: 15px 15px;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
     padding: 0.8rem;
 }
 
@@ -87,8 +98,11 @@ p{
     border-radius: 15px 15px;
 }
 
-#names{
-    margin-top: 1.5rem;
+.no-nameDay{
+    color: rgb(248, 134, 134);
+}
+
+#dateNames{
     width: 100vw;
 }
 
