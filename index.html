@@ -15,7 +15,7 @@
     <main class="container">
         <h1>Nameday</h1>
             <form id="form">
-                <div class="form-row" role="rowgroup">
+                <div class="form-row" role="layout">
 
                     <section class="col-12">
                         <label for="timezoneInput">Choose your timezone</label>
@@ -30,7 +30,7 @@
                             <option value="Asia/Tokyo">Tokyo</option>
                             <option value="Asia/Tehran">Tehran</option>
                         </select>
-                        <label for="countryInput">Choose country</label>
+                        <label for="countryInput1">Choose country</label>
                         <select class="custom-select" id="countryInput1">
                             <option selected>Country</option>
                             <option value="at">Austria</option>
@@ -56,7 +56,7 @@
                     <section class="col-12">
                         <label for="nameInput">Write a name</label>
                         <input id="nameInput" type="text" class="form-control" placeholder="Name">
-                        <label for="countryInput">Choose country</label>
+                        <label for="countryInput2">Choose country</label>
                         <select class="custom-select" id="countryInput2">
                             <option selected>Country</option>
                             <option value="at">Austria</option>
@@ -80,7 +80,7 @@
                     </section>
                 </div>
                 
-                <div class="input-group" role="input-container">
+                <div class="input-group" aria-role="layout">
                     <label for="day">Choose date</label>
                     <select class="custom-select" id="day">
                         <option selected>Day</option>
@@ -131,7 +131,7 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                     </select>
-                    <label for="countryInput">Choose country</label>
+                    <label for="countryInput3">Choose country</label>
                     <select class="custom-select" id="countryInput3">
                         <option selected>Country</option>
                         <option value="at">Austria</option>

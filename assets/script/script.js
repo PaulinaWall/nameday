@@ -59,6 +59,13 @@ console.log('datum data', data);
     document.querySelector('#countryInput3').value = 'Country';
 };
 
+const errorWarning = () => {
+    alert('Problem, did you fill in all requested fields?')
+};
+
+const catchError = (err) => {
+    alert('Problem, did you fill in all requested fields?', err)
+};
 
 // Add eventlistener
 document.querySelector('#form').addEventListener('click', e => {
@@ -78,11 +85,11 @@ document.querySelector('#form').addEventListener('click', e => {
         if(200){
             renderTimezone(data, country1);
         }else{
-            console.error('not OK');
+            errorWarning();
         }
         })
-        .catch(err => {
-            console.error(err);
+        .catch((err) => {
+            catchError(err);
         }); 
     }else if(e.target.id === "btn2"){
         getNameDay(name, country2)
@@ -90,11 +97,11 @@ document.querySelector('#form').addEventListener('click', e => {
             if(200){
                 renderNamesDate(data, name);
             }else{
-                console.error('not OK');
+                errorWarning();
             }
         })
         .catch(err => {
-            console.error(err);
+            catchError(err);
         });
     }else if(e.target.id === "btn3"){
         getNames(country3, day, month)
@@ -102,38 +109,12 @@ document.querySelector('#form').addEventListener('click', e => {
             if(200){
                 renderDateNames(data, country3, day, month);
             }else{
-                console.error('not OK');
+                errorWarning();
             }
         })
         .catch(err => {
-            console.error(err);
+            catchError(err);
         });
     }  
  });
 
- /*
- const emptyNamesDates = () => {
-    document.querySelector('#todayNames').innerHTML = '';
-    document.querySelector('#date').innerHTML = '';
-    document.querySelector('#dateNames').innerHTML = '';
-};
-*/
-
-/*
- const errorWarning = () => {
-    `
-        <div class="alert alert-warning" role="alert">
-        Fyll i alla fält.
-        </div>
-    `
-};
-
-const catchError = (err) => {
-    document.querySelector('#date').innerHTML = 
-    `
-        <div class="alert alert-warning" role="alert">
-        ${err}
-        </div>
-    `
-};
-*/
