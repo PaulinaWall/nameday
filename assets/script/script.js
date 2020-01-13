@@ -14,8 +14,8 @@ const renderTimezone = (data, country1) => {
     document.querySelector('#countryInput1').value = 'Country';
 };
 
+
 const renderNamesDate = (data, name) => {
-    console.log('Datan du behöver', data);
     //loop the array to get info
     data.results.forEach(dataName => {
         document.querySelector('#date').innerHTML = `
@@ -41,6 +41,7 @@ const renderNamesDate = (data, name) => {
     document.querySelector('#countryInput2').value = 'Country';
 };
 
+
 const renderDateNames = (data, country3, day, month) => {
     //Loop array and return names after choosen country. 
     const names = data.data.map(name => name.namedays[country3]);
@@ -58,6 +59,7 @@ console.log('datum data', data);
     document.querySelector('#countryInput3').value = 'Country';
 };
 
+
 // Add eventlistener
 document.querySelector('#form').addEventListener('click', e => {
     e.preventDefault();
@@ -74,18 +76,13 @@ document.querySelector('#form').addEventListener('click', e => {
         getTimezone(country1, timezone)
         .then(data => {
         if(200){
-            console.log(data);
             renderTimezone(data, country1);
         }else{
             console.error('not OK');
-            //kalla på en warnings funktion med data.message
-            //errorWarning();
         }
         })
         .catch(err => {
-            //kalla på en warnings funktion med err
             console.error(err);
-            //catchError(err);
         }); 
     }else if(e.target.id === "btn2"){
         getNameDay(name, country2)
@@ -94,31 +91,22 @@ document.querySelector('#form').addEventListener('click', e => {
                 renderNamesDate(data, name);
             }else{
                 console.error('not OK');
-                //kalla på en warnings funktion med data.message
-                //errorWarning();
             }
         })
         .catch(err => {
-            //kalla på en warnings funktion med err
             console.error(err);
-            //catchError(err);
         });
     }else if(e.target.id === "btn3"){
         getNames(country3, day, month)
         .then(data => {
             if(200){
-                console.log(data);
                 renderDateNames(data, country3, day, month);
             }else{
                 console.error('not OK');
-                //kalla på en warnings funktion med data.message
-                //errorWarning();
             }
         })
         .catch(err => {
-            //kalla på en warnings funktion med err
             console.error(err);
-            //catchError(err);
         });
     }  
  });
