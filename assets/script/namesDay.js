@@ -4,7 +4,6 @@ const getTimezone = async (country1, timezone) => {
 
     const data = await response.json();
     return data;
-    
 };
 
 const getNameDay = async (name, country2) => {
@@ -21,7 +20,6 @@ const getNames = async (country3, day, month) => {
 
     const data = await response.json();
     return data;
-    
 };
 
 

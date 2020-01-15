@@ -1,21 +1,25 @@
 const renderTimezone = (data, country1) => {
-    console.log('timezone data', data);
-
+    //save all names from the choosen country in a new array
     const timezoneNames = data.data.map(timezone => timezone.namedays[country1]);
-
+    console.log(data);
+    console.log(timezoneNames);
     document.querySelector('#todayNames').innerHTML = `
         <div class="content-container" role="container">
             <h2>Today's namedays:</h2>
             <p>${timezoneNames}</p>
         </div>
     `;
-
+    //reset input fields
     document.querySelector('#timezoneInput').value = 'Timezone';
     document.querySelector('#countryInput1').value = 'Country';
 };
 
 
 const renderNamesDate = (data, name) => {
+    //reset input fields
+    document.querySelector('#date').innerHTML = '';
+    document.querySelector('#nameInput').value = 'Name';
+    document.querySelector('#countryInput2').value = 'Country';
     //loop the array to get info
     data.results.forEach(dataName => {
         document.querySelector('#date').innerHTML = `
@@ -29,16 +33,12 @@ const renderNamesDate = (data, name) => {
     });
     //render another message if data.results is empty and don´t have nameday in this country
     if(data.results.length === 0){
-        console.log(data.results);
         document.querySelector('#date').innerHTML = `
             <div class="content-container" role="container">
                 <h2 class="no-nameDay">${name} has no nameday in ${data['country name']}.</h2>
             </div>
         `;
     }
-    //reset input fields
-    document.querySelector('#nameInput').value = 'Name';
-    document.querySelector('#countryInput2').value = 'Country';
 };
 
 
@@ -59,6 +59,7 @@ console.log('datum data', data);
     document.querySelector('#countryInput3').value = 'Country';
 };
 
+ //alert error message
 const errorWarning = () => {
     alert('Problem, did you fill in all requested fields?')
 };
@@ -71,6 +72,7 @@ const catchError = (err) => {
 document.querySelector('#form').addEventListener('click', e => {
     e.preventDefault();
 
+    //get input values
     const timezone = document.querySelector('#timezoneInput').value;
     const name = document.querySelector('#nameInput').value;
     const country1 = document.querySelector('#countryInput1').value;
@@ -79,14 +81,15 @@ document.querySelector('#form').addEventListener('click', e => {
     const day = document.querySelector('#day').value;
     const month = document.querySelector('#month').value;
 
+    //see wich button was clicked
     if(e.target.id === "btn1"){
         getTimezone(country1, timezone)
         .then(data => {
-        if(200){
-            renderTimezone(data, country1);
-        }else{
-            errorWarning();
-        }
+            if(200){
+                renderTimezone(data, country1);
+            }else{
+                errorWarning();
+            }
         })
         .catch((err) => {
             catchError(err);
