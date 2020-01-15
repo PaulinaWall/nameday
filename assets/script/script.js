@@ -1,3 +1,5 @@
+const formEl = document.querySelector('#form');
+
 const renderTimezone = (data, country1) => {
     //save all names from the choosen country in a new array
     const timezoneNames = data.data.map(timezone => timezone.namedays[country1]);
@@ -10,16 +12,18 @@ const renderTimezone = (data, country1) => {
         </div>
     `;
     //reset input fields
-    document.querySelector('#timezoneInput').value = 'Timezone';
-    document.querySelector('#countryInput1').value = 'Country';
+    formEl.reset();
+    // document.querySelector('#timezoneInput').value = 'Timezone';
+    // document.querySelector('#countryInput1').value = 'Country';
 };
 
 
 const renderNamesDate = (data, name) => {
     //reset input fields
-    document.querySelector('#date').innerHTML = '';
-    document.querySelector('#nameInput').value = 'Name';
-    document.querySelector('#countryInput2').value = 'Country';
+    formEl.reset();
+    // document.querySelector('#date').innerHTML = '';
+    // document.querySelector('#nameInput').value = 'Name';
+    // document.querySelector('#countryInput2').value = 'Country';
     //loop the array to get info
     data.results.forEach(dataName => {
         document.querySelector('#date').innerHTML = `
@@ -43,20 +47,23 @@ const renderNamesDate = (data, name) => {
 
 
 const renderDateNames = (data, country3, day, month) => {
+    //Här plockar jag ut denna variabeln igen för att kunna skriva ut den i meddelandet. Jag kan inte använda country3 som egentligen är samma trots att jag skickar in den. Därför plockar jag ut den igen (om du undrar)
+    const country4 = document.querySelector('#countryInput3');
+    const choosenCountry = country4.options[country4.selectedIndex].text;
     //Loop array and return names after choosen country. 
     const names = data.data.map(name => name.namedays[country3]);
-console.log('datum data', data);
     document.querySelector('#dateNames').innerHTML = 
     `
         <div class="content-container" role="container">
-            <h2>Namedays in choosen country ${day}/${month} is:</h2>
+            <h2>Namedays in ${choosenCountry} ${day}/${month} is:</h2>
             <p>${names}</p>
         </div>
     `;
     //reset input fields
-    document.querySelector('#day').value = 'Day';
-    document.querySelector('#month').value = 'Month';
-    document.querySelector('#countryInput3').value = 'Country';
+    // document.querySelector('#day').value = 'Day';
+    // document.querySelector('#month').value = 'Month';
+    // document.querySelector('#countryInput3').value = 'Country';
+    formEl.reset();
 };
 
  //alert error message
@@ -69,55 +76,60 @@ const catchError = (err) => {
 };
 
 // Add eventlistener
-document.querySelector('#form').addEventListener('click', e => {
-    e.preventDefault();
+formEl.addEventListener('click', e => {
 
     //get input values
-    const timezone = document.querySelector('#timezoneInput').value;
-    const name = document.querySelector('#nameInput').value;
-    const country1 = document.querySelector('#countryInput1').value;
-    const country2 = document.querySelector('#countryInput2').value;
-    const country3 = document.querySelector('#countryInput3').value;
-    const day = document.querySelector('#day').value;
-    const month = document.querySelector('#month').value;
+    const timezone = formEl.timezoneInput.value;
+    const name = formEl.nameInput.value;
+    const country1 = formEl.countryInput1.value;
+    const country2 = formEl.countryInput2.value;
+    const country3 = formEl.countryInput3.value;
+    const day =  formEl.day.value;
+    const month = formEl.month.value;
+    //const timezone = document.querySelector('#timezoneInput').value;
+    // const name = document.querySelector('#nameInput').value;
+    // const country1 = document.querySelector('#countryInput1').value;
+    // const country2 = document.querySelector('#countryInput2').value;
+    // const country3 = document.querySelector('#countryInput3').value;
+    // const day = document.querySelector('#day').value;
+    // const month = document.querySelector('#month').value;
 
     //see wich button was clicked
     if(e.target.id === "btn1"){
         getTimezone(country1, timezone)
-        .then(data => {
-            if(200){
-                renderTimezone(data, country1);
-            }else{
-                errorWarning();
-            }
-        })
-        .catch((err) => {
-            catchError(err);
-        }); 
+            .then(data => {
+                if(200){
+                    renderTimezone(data, country1);
+                }else{
+                    errorWarning();
+                }
+            })
+            .catch((err) => {
+                catchError(err);
+            }); 
     }else if(e.target.id === "btn2"){
         getNameDay(name, country2)
-        .then(data => {
-            if(200){
-                renderNamesDate(data, name);
-            }else{
-                errorWarning();
-            }
-        })
-        .catch(err => {
-            catchError(err);
-        });
+            .then(data => {
+                if(200){
+                    renderNamesDate(data, name);
+                }else{
+                    errorWarning();
+                }
+            })
+            .catch(err => {
+                catchError(err);
+            });
     }else if(e.target.id === "btn3"){
         getNames(country3, day, month)
-        .then(data => {
-            if(200){
-                renderDateNames(data, country3, day, month);
-            }else{
-                errorWarning();
-            }
-        })
-        .catch(err => {
-            catchError(err);
-        });
+            .then(data => {
+                if(200){
+                    renderDateNames(data, country3, day, month);
+                }else{
+                    errorWarning();
+                }
+            })
+            .catch(err => {
+                catchError(err);
+            });
     }  
  });
-
