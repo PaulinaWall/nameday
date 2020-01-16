@@ -59,7 +59,7 @@ const renderDateNames = (data, country3, day, month) => {
 
  //Alert error message
 const errorWarning = (err) => {
-    alert('No response from server, did you fill in requested fields?')
+    alert('No response from server, did you fill in requested fields?', err);
 };
 
 // Add eventlistener
