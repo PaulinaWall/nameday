@@ -1,29 +1,23 @@
 const formEl = document.querySelector('#form');
 
 const renderTimezone = (data, country1) => {
+    //Jag kan inte använda country1 som egentligen är samma, som country4 blir, trots att jag skickar in den. Därför plockar jag ut den igen (om du undrar).
+    const country4 = document.querySelector('#countryInput1');
+    const choosenCountry = country4.options[country4.selectedIndex].text;
     //save all names from the choosen country in a new array
     const timezoneNames = data.data.map(timezone => timezone.namedays[country1]);
-    console.log(data);
-    console.log(timezoneNames);
     document.querySelector('#todayNames').innerHTML = `
         <div class="content-container" role="container">
-            <h2>Today's namedays:</h2>
+            <h2>Today's namedays in ${choosenCountry}:</h2>
             <p>${timezoneNames}</p>
         </div>
     `;
     //reset input fields
     formEl.reset();
-    // document.querySelector('#timezoneInput').value = 'Timezone';
-    // document.querySelector('#countryInput1').value = 'Country';
 };
 
 
 const renderNamesDate = (data, name) => {
-    //reset input fields
-    formEl.reset();
-    // document.querySelector('#date').innerHTML = '';
-    // document.querySelector('#nameInput').value = 'Name';
-    // document.querySelector('#countryInput2').value = 'Country';
     //loop the array to get info
     data.results.forEach(dataName => {
         document.querySelector('#date').innerHTML = `
@@ -43,11 +37,12 @@ const renderNamesDate = (data, name) => {
             </div>
         `;
     }
+    //reset input fields
+    formEl.reset();
 };
 
 
 const renderDateNames = (data, country3, day, month) => {
-    //Här plockar jag ut denna variabeln igen för att kunna skriva ut den i meddelandet. Jag kan inte använda country3 som egentligen är samma trots att jag skickar in den. Därför plockar jag ut den igen (om du undrar)
     const country4 = document.querySelector('#countryInput3');
     const choosenCountry = country4.options[country4.selectedIndex].text;
     //Loop array and return names after choosen country. 
@@ -59,20 +54,12 @@ const renderDateNames = (data, country3, day, month) => {
             <p>${names}</p>
         </div>
     `;
-    //reset input fields
-    // document.querySelector('#day').value = 'Day';
-    // document.querySelector('#month').value = 'Month';
-    // document.querySelector('#countryInput3').value = 'Country';
     formEl.reset();
 };
 
- //alert error message
-const errorWarning = () => {
-    alert('Problem, did you fill in all requested fields?')
-};
-
-const catchError = (err) => {
-    alert('Problem, did you fill in all requested fields?', err)
+ //Alert error message
+const errorWarning = (err) => {
+    alert('No response from server, did you fill in requested fields?')
 };
 
 // Add eventlistener
@@ -86,13 +73,6 @@ formEl.addEventListener('click', e => {
     const country3 = formEl.countryInput3.value;
     const day =  formEl.day.value;
     const month = formEl.month.value;
-    //const timezone = document.querySelector('#timezoneInput').value;
-    // const name = document.querySelector('#nameInput').value;
-    // const country1 = document.querySelector('#countryInput1').value;
-    // const country2 = document.querySelector('#countryInput2').value;
-    // const country3 = document.querySelector('#countryInput3').value;
-    // const day = document.querySelector('#day').value;
-    // const month = document.querySelector('#month').value;
 
     //see wich button was clicked
     if(e.target.id === "btn1"){
@@ -105,7 +85,7 @@ formEl.addEventListener('click', e => {
                 }
             })
             .catch((err) => {
-                catchError(err);
+                errorWarning(err);
             }); 
     }else if(e.target.id === "btn2"){
         getNameDay(name, country2)
@@ -117,7 +97,7 @@ formEl.addEventListener('click', e => {
                 }
             })
             .catch(err => {
-                catchError(err);
+                errorWarning(err);
             });
     }else if(e.target.id === "btn3"){
         getNames(country3, day, month)
@@ -129,7 +109,7 @@ formEl.addEventListener('click', e => {
                 }
             })
             .catch(err => {
-                catchError(err);
+                errorWarning(err);
             });
     }  
  });
